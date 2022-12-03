@@ -97,4 +97,16 @@ start.addEventListener('click', function(){
 tempo.classList.add('col-6');
 
 
+// FUNCTIONS
+
+function timeUnit (element,elementValue,maxvalue){
+    if (elementValue<maxvalue){
+        elementValue++;
+        element.innerHTML = elementValue;
+    } else{
+        elementValue = 0;
+        element.innerHTML = elementValue;
+    }
+}
+
 
