@@ -34,12 +34,12 @@ console.log(tempo);
 start.addEventListener('click', function(){
     if(i==0 || value == i){
         let myInterval = setInterval(function(){
-            if(i<9){
-                i++;
-                centiSeconds.innerHTML = i;
+            if(centiSecondsValue<9){
+                centiSecondsValue++;
+                centiSeconds.innerHTML = centiSecondsValue;
             }else{
-                i=0;
-                centiSeconds.innerHTML = i;
+                centiSecondsValue=0;
+                centiSeconds.innerHTML = centiSecondsValue;
                 if(deciSecondsValue<9){
                     deciSecondsValue++;
                     deciSeconds.innerHTML = deciSecondsValue;
@@ -64,13 +64,7 @@ start.addEventListener('click', function(){
                             }else{
                                     minutesValue=0;
                                     minutes.innerHTML = minutesValue;
-                                    if(decaMinutesValue<9){
-                                        decaMinutesValue++;
-                                        decaMinutes.innerHTML = minutesValue
-                                    }else{
-                                        decaMinutesValue = 0;
-                                        decaMinutes.innerHTML = decaMinutesValue;
-                                    }
+                                    timeUnit(decaMinutes,decaMinutesValue,9);
                                 }
                             }
                         }
@@ -99,11 +93,11 @@ tempo.classList.add('col-6');
 
 // FUNCTIONS
 
-function timeUnit (element,elementValue,maxvalue){
-    if (elementValue<maxvalue){
+function timeUnit (element,elementValue,maxValue){
+    if (elementValue<maxValue){
         elementValue++;
         element.innerHTML = elementValue;
-    } else{
+    } else {
         elementValue = 0;
         element.innerHTML = elementValue;
     }
