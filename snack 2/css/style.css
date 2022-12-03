@@ -1,8 +1,14 @@
 
 
 #tempo {
-  font-size: 4em;
+  font-size: 3em;
   padding: 10px;
+}
+
+.time-square{
+  border: 2px solid lightslategray;
+  border-radius: 15px;
+  margin: 0 2px;
 }
 
 
