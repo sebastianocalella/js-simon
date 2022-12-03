@@ -6,7 +6,7 @@ const reset = document.getElementById('reset');
 let i=0;
 let value = 0;
 
-for (let i=1; i<6; i++){
+for (let i=1; i<7; i++){
     let square = document.createElement('div');
     square.classList.add('time-square','col');
     square.innerHTML = value;
@@ -14,17 +14,19 @@ for (let i=1; i<6; i++){
     square.classList.add("s-" + i);
 }
 
-const centiSeconds = document.querySelector('.s-5');
-const deciSeconds = document.querySelector('.s-4');
-const secondsUnit = document.querySelector('.s-3');
-const decaSeconds = document.querySelector('.s-2');
-const minutes = document.querySelector('.s-1');
+const centiSeconds = document.querySelector('.s-6');
+const deciSeconds = document.querySelector('.s-5');
+const secondsUnit = document.querySelector('.s-4');
+const decaSeconds = document.querySelector('.s-3');
+const minutes = document.querySelector('.s-2');
+const decaMinutes = document.querySelector('.s-1');
 
 let centiSecondsValue = 0;
 let deciSecondsValue = 0;
 let secondsUnitValue = 0;
 let decaSecondsValue = 0;
 let minutesValue = 0;
+let decaMinutesValue = 0;
 
 console.log(centiSeconds);
 console.log(tempo);
@@ -35,7 +37,7 @@ start.addEventListener('click', function(){
             if(i<9){
                 i++;
                 centiSeconds.innerHTML = i;
-            } else{
+            }else{
                 i=0;
                 centiSeconds.innerHTML = i;
                 if(deciSecondsValue<9){
@@ -59,27 +61,38 @@ start.addEventListener('click', function(){
                             if(minutesValue<9){
                                 minutesValue++;
                                 minutes.innerHTML = minutesValue;
+                            }else{
+                                    minutesValue=0;
+                                    minutes.innerHTML = minutesValue;
+                                    if(decaMinutesValue<9){
+                                        decaMinutesValue++;
+                                        decaMinutes.innerHTML = minutesValue
+                                    }else{
+                                        decaMinutesValue = 0;
+                                        decaMinutes.innerHTML = decaMinutesValue;
+                                    }
+                                }
                             }
                         }
                     }
                 }
-            }
-        },10)
-        pause.addEventListener('click', function(){
-            clearInterval(myInterval);
-            value=i;
-        });
-        reset.addEventListener('click',function(){
-            i=0;
-            centiSeconds.innerHTML = centiSecondsValue = 0;
-            deciSeconds.innerHTML = deciSecondsValue = 0;
-            secondsUnit.innerHTML = secondsUnitValue = 0;
-            decaSeconds.innerHTML = decaSecondsValue = 0;
-            minutes.innerHTML = minutesValue = 0;
-            clearInterval(myInterval);
-        });
+            },10)
+            pause.addEventListener('click', function(){
+                clearInterval(myInterval);
+                value=i;
+            });
+            reset.addEventListener('click',function(){
+                i=0;
+                centiSeconds.innerHTML = centiSecondsValue = 0;
+                deciSeconds.innerHTML = deciSecondsValue = 0;
+                secondsUnit.innerHTML = secondsUnitValue = 0;
+                decaSeconds.innerHTML = decaSecondsValue = 0;
+                minutes.innerHTML = minutesValue = 0;
+                clearInterval(myInterval);
+            });
+        }
     }
-});
+);
 
 tempo.classList.add('col-6');
 
