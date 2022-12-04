@@ -52,10 +52,11 @@ tempo.classList.add('col-6');
 // FUNCTIONS
  
   function myTimer(intervalId, value, element, maxNumber, time, pauseElement, resetElement){
+    
+  let timerUp=false;
 
   start.addEventListener('click', function(){
 
-    let timerUp=false;
     
     if(!timerUp){
 
