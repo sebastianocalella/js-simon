@@ -3,13 +3,12 @@ const start = document.getElementById('start');
 const pause = document.getElementById('pause');
 const reset = document.getElementById('reset');
 
-let i=0;
-let value = 0;
+let divValue = 0;
 
 for (let i=1; i<7; i++){
     let square = document.createElement('div');
     square.classList.add('time-square','col');
-    square.innerHTML = value;
+    square.innerHTML = divValue;
     tempo.appendChild(square);
     square.classList.add("s-" + i);
 }
@@ -35,42 +34,54 @@ let decaSecondsInterval;
 let minutesInterval;
 let decaMinutesInterval;
 
-console.log(centiSeconds);
-console.log(tempo);
 
-start.addEventListener('click', function(){
-    myTimer(centiSecondsInterval,centiSecondsValue,centiSeconds,9,10,pause,reset);
-    myTimer(deciSecondsInterval,deciSecondsValue,deciSeconds,9,100,pause,reset);
-    myTimer(secondsUnitInterval,secondsUnitValue,secondsUnit,9,1000,pause,reset);
-    myTimer(decaSecondsInterval,decaSecondsValue,decaSeconds,5,10*1000,pause,reset);
-    myTimer(minutesInterval,minutesValue,minutes,9,60*1000,pause,reset);
-    myTimer(decaMinutesInterval,decaMinutesValue,decaMinutes,5,60*10*1000,pause,reset);
-});
+
+myTimer(centiSecondsInterval,centiSecondsValue,centiSeconds,9,10,pause,reset);
+myTimer(deciSecondsInterval,deciSecondsValue,deciSeconds,9,100,pause,reset);
+myTimer(secondsUnitInterval,secondsUnitValue,secondsUnit,9,1000,pause,reset);
+myTimer(decaSecondsInterval,decaSecondsValue,decaSeconds,5,10*1000,pause,reset);
+myTimer(minutesInterval,minutesValue,minutes,9,60*1000,pause,reset);
+myTimer(decaMinutesInterval,decaMinutesValue,decaMinutes,5,60*10*1000,pause,reset);
+
+
+
 
 tempo.classList.add('col-6');
 
 
 // FUNCTIONS
-
+ 
   function myTimer(intervalId, value, element, maxNumber, time, pauseElement, resetElement){
+
+  start.addEventListener('click', function(){
+
+    let timerUp=false;
+    
+    if(!timerUp){
+
+        timerUp = true;
+
     intervalId = setInterval(() => {
       if(value < maxNumber){
         value ++;
         element.innerHTML= value;
       }else{
-        value = 0
+        value = 0;
         element.innerHTML= value;
       }
     }, time);
-
-    pauseElement.addEventListener('click',function(){
+      
+      pauseElement.addEventListener('click',function(){
+          clearInterval(intervalId);
+          timerUp = false;
+      });
+      
+      resetElement.addEventListener('click',function(){
         clearInterval(intervalId);
-    });
-
-    resetElement.addEventListener('click',function(){
-        clearInterval(intervalId);
+        value = 0;
         element.innerHTML = 0;
-    });
-  }
-
-
+        timerUp = false;
+      });
+  } 
+  });
+}
