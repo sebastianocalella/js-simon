@@ -36,12 +36,12 @@ let decaMinutesInterval;
 
 
 
-myTimer(centiSecondsInterval,centiSecondsValue,centiSeconds,9,10,pause,reset);
-myTimer(deciSecondsInterval,deciSecondsValue,deciSeconds,9,100,pause,reset);
-myTimer(secondsUnitInterval,secondsUnitValue,secondsUnit,9,1000,pause,reset);
-myTimer(decaSecondsInterval,decaSecondsValue,decaSeconds,5,10*1000,pause,reset);
-myTimer(minutesInterval,minutesValue,minutes,9,60*1000,pause,reset);
-myTimer(decaMinutesInterval,decaMinutesValue,decaMinutes,5,60*10*1000,pause,reset);
+myTimer(centiSecondsInterval,centiSecondsValue,centiSeconds,9,10,start,pause,reset);
+myTimer(deciSecondsInterval,deciSecondsValue,deciSeconds,9,100,start,pause,reset);
+myTimer(secondsUnitInterval,secondsUnitValue,secondsUnit,9,1000,start,pause,reset);
+myTimer(decaSecondsInterval,decaSecondsValue,decaSeconds,5,10*1000,start,pause,reset);
+myTimer(minutesInterval,minutesValue,minutes,9,60*1000,start,pause,reset);
+myTimer(decaMinutesInterval,decaMinutesValue,decaMinutes,5,60*10*1000,start,pause,reset);
 
 
 
@@ -51,11 +51,11 @@ tempo.classList.add('col-6');
 
 // FUNCTIONS
  
-  function myTimer(intervalId, value, element, maxNumber, time, pauseElement, resetElement){
+  function myTimer(intervalId, value, element, maxNumber, time,startElement, pauseElement, resetElement){
     
   let timerUp=false;
 
-  start.addEventListener('click', function(){
+  startElement.addEventListener('click', function(){
 
     
     if(!timerUp){
