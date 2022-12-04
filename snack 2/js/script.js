@@ -28,79 +28,49 @@ let decaSecondsValue = 0;
 let minutesValue = 0;
 let decaMinutesValue = 0;
 
+let centiSecondsInterval;
+let deciSecondsInterval;
+let secondsUnitInterval;
+let decaSecondsInterval;
+let minutesInterval;
+let decaMinutesInterval;
+
 console.log(centiSeconds);
 console.log(tempo);
 
 start.addEventListener('click', function(){
-    if(i==0 || value == i){
-        let myInterval = setInterval(function(){
-            if(centiSecondsValue<9){
-                centiSecondsValue++;
-                centiSeconds.innerHTML = centiSecondsValue;
-            }else{
-                centiSecondsValue=0;
-                centiSeconds.innerHTML = centiSecondsValue;
-                if(deciSecondsValue<9){
-                    deciSecondsValue++;
-                    deciSeconds.innerHTML = deciSecondsValue;
-                }else{
-                    deciSecondsValue=0;
-                    deciSeconds.innerHTML = deciSecondsValue;
-                    if(secondsUnitValue<9){
-                        secondsUnitValue++;
-                        secondsUnit.innerHTML = secondsUnitValue;
-                    }else{
-                        secondsUnitValue = 0;
-                        secondsUnit.innerHTML = secondsUnitValue;
-                        if(decaSecondsValue<5){
-                            decaSecondsValue++;
-                            decaSeconds.innerHTML = decaSecondsValue;
-                        }else{
-                            decaSecondsValue = 0;
-                            decaSeconds.innerHTML = decaSecondsValue;
-                            if(minutesValue<9){
-                                minutesValue++;
-                                minutes.innerHTML = minutesValue;
-                            }else{
-                                    minutesValue=0;
-                                    minutes.innerHTML = minutesValue;
-                                    timeUnit(decaMinutes,decaMinutesValue,9);
-                                }
-                            }
-                        }
-                    }
-                }
-            },10)
-            pause.addEventListener('click', function(){
-                clearInterval(myInterval);
-                value=i;
-            });
-            reset.addEventListener('click',function(){
-                i=0;
-                centiSeconds.innerHTML = centiSecondsValue = 0;
-                deciSeconds.innerHTML = deciSecondsValue = 0;
-                secondsUnit.innerHTML = secondsUnitValue = 0;
-                decaSeconds.innerHTML = decaSecondsValue = 0;
-                minutes.innerHTML = minutesValue = 0;
-                clearInterval(myInterval);
-            });
-        }
-    }
-);
+    myTimer(centiSecondsInterval,centiSecondsValue,centiSeconds,9,10,pause,reset);
+    myTimer(deciSecondsInterval,deciSecondsValue,deciSeconds,9,100,pause,reset);
+    myTimer(secondsUnitInterval,secondsUnitValue,secondsUnit,9,1000,pause,reset);
+    myTimer(decaSecondsInterval,decaSecondsValue,decaSeconds,5,10*1000,pause,reset);
+    myTimer(minutesInterval,minutesValue,minutes,9,60*1000,pause,reset);
+    myTimer(decaMinutesInterval,decaMinutesValue,decaMinutes,5,60*10*1000,pause,reset);
+});
 
 tempo.classList.add('col-6');
 
 
 // FUNCTIONS
 
-function timeUnit (element,elementValue,maxValue){
-    if (elementValue<maxValue){
-        elementValue++;
-        element.innerHTML = elementValue;
-    } else {
-        elementValue = 0;
-        element.innerHTML = elementValue;
-    }
-}
+  function myTimer(intervalId, value, element, maxNumber, time, pauseElement, resetElement){
+    intervalId = setInterval(() => {
+      if(value < maxNumber){
+        value ++;
+        element.innerHTML= value;
+      }else{
+        value = 0
+        element.innerHTML= value;
+      }
+    }, time);
+
+    pauseElement.addEventListener('click',function(){
+        clearInterval(intervalId);
+    });
+
+    resetElement.addEventListener('click',function(){
+        clearInterval(intervalId);
+        element.innerHTML = 0;
+    });
+  }
 
 
