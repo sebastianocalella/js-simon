@@ -10,8 +10,8 @@ const studentTwo ={
     age: 33
 }
 
-for(let key in student){
-    console.log(key + ": " + student[key]);
+for(let key in studentOne){
+    console.log(key + ": " + studentOne[key]);
 }
 
 const classe = [];
