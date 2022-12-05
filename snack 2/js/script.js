@@ -54,27 +54,30 @@ tempo.classList.add('col-6');
   function myTimer(intervalId, value, element, maxNumber, time,startElement, pauseElement, resetElement){
     
   let timerUp=false;
-
+  let pauseValue = 0;
+  
   startElement.addEventListener('click', function(){
-
     
     if(!timerUp){
 
-        timerUp = true;
-
-    intervalId = setInterval(() => {
-      if(value < maxNumber){
-        value ++;
-        element.innerHTML= value;
-      }else{
-        value = 0;
-        element.innerHTML= value;
-      }
-    }, time);
+      timerUp = true;
+      
+      intervalId = setInterval(() => {
+        if(value < maxNumber){
+          value ++;
+          element.innerHTML= value;
+        }else{
+          value = 0;
+          element.innerHTML= value;
+        }
+      }, time);
       
       pauseElement.addEventListener('click',function(){
-          clearInterval(intervalId);
-          timerUp = false;
+        pauseValue+=value;
+
+        clearInterval(intervalId);
+        timerUp = false;
+        return pauseValue;
       });
       
       resetElement.addEventListener('click',function(){
@@ -83,6 +86,14 @@ tempo.classList.add('col-6');
         element.innerHTML = 0;
         timerUp = false;
       });
-  } 
+    } 
   });
 }
+
+/*
+if(preValue!=0){
+
+  console.log('ciao');
+  setTimeout(value++, time-(pauseValue*time/10));
+}
+*/
