@@ -5,6 +5,5 @@ const student ={
 }
 
 for(let key in student){
-    console.log(key);
-    console.log(student[key]);
+    console.log(key + ": " + student[key]);
 }
