@@ -44,5 +44,23 @@ for (let i =0; i<3; i++){
     autos.push(autoAltro);
 }
 
-
 console.log(autos);
+
+const benzinaList = [];
+const dieselList = [];
+const altroList = [];
+
+
+for (let i=0;i<autos.length;i++){
+    const currentAuto = autos[i];
+    if(currentAuto.alimentazione==='benzina'){
+        benzinaList.push(currentAuto);
+    } else if(currentAuto.alimentazione==='diesel'){
+        dieselList.push(currentAuto);
+    } else{
+        altroList.push(currentAuto);
+    }
+    
+}
+
+console.log(benzinaList);
