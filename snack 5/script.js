@@ -52,9 +52,12 @@ const zucchines = [
 ];
 
 let pesoTotale =0;
+let prezzoMedio = 0;
 for (let i=0; i<zucchines.length;i++){
     const currentZucchina = zucchines[i];
     pesoTotale+=currentZucchina.peso;
+    pesoMedio =(pesoTotale/zucchines.length);
 }
 
-console.log(pesoTotale/1000 + " kg");
+console.log(pesoTotale/1000 + "kg");
+console.log(pesoMedio + "g");
