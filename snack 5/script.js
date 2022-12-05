@@ -57,4 +57,4 @@ for (let i=0; i<zucchines.length;i++){
     pesoTotale+=currentZucchina.peso;
 }
 
-console.log(pesoTotale + " g");
+console.log(pesoTotale/1000 + " kg");
