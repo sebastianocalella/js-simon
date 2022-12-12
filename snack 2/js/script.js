@@ -3,6 +3,35 @@ const start = document.getElementById('start');
 const pause = document.getElementById('pause');
 const reset = document.getElementById('reset');
 
+let i=0;
+tempo.innerHTML=i;
+start.addEventListener('click', function(){
+    if(i==0 || value == i){
+        let myInterval = setInterval(function(){
+            i++;
+            tempo.innerHTML=i;
+        },1)
+        pause.addEventListener('click', function(){
+            clearInterval(myInterval);
+            value=i;
+        });
+        reset.addEventListener('click',function(){
+            i=0;
+            tempo.innerHTML=i;
+            clearInterval(myInterval);
+        });
+    }
+}); 
+
+
+/* trin an alternative way but it didn't work
+
+
+const tempo = document.getElementById('tempo');
+const start = document.getElementById('start');
+const pause = document.getElementById('pause');
+const reset = document.getElementById('reset');
+
 let divValue = 0;
 
 for (let i=1; i<7; i++){
@@ -49,8 +78,8 @@ myTimer(decaMinutesInterval,decaMinutesValue,decaMinutes,5,60*10*1000,start,paus
 tempo.classList.add('col-6');
 
 
-// FUNCTIONS
- 
+FUNCTIONS
+
   function myTimer(intervalId, value, element, maxNumber, time,startElement, pauseElement, resetElement){
     
   let timerUp=false;
@@ -90,10 +119,4 @@ tempo.classList.add('col-6');
   });
 }
 
-/*
-if(preValue!=0){
-
-  console.log('ciao');
-  setTimeout(value++, time-(pauseValue*time/10));
-}
 */
